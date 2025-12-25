@@ -19,7 +19,7 @@ integration = [
     "fastapi>=0.119.0",
     "uvicorn>=0.37.0",
     "pytest>=8.4.2",
-
+    "ruff>=0.14.0,<1.0.0"
 ]
 
 deployment = [

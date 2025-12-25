@@ -24,9 +24,6 @@ jobs:
         # TODO: Add command to sync ONLY integration group dependencies
         run: |
           uv sync --extra integration
-          
-      - name: Install pre-commit hooks
-        run: uv run pre-commit install --install-hooks
 
       # TODO: Add steps for 'ruff check' and 'pytest'
       - name: Run ruff checks
