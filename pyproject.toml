@@ -21,6 +21,11 @@ integration = [
     "uvicorn>=0.37.0",
     "pytest>=8.4.2",
     "ruff>=0.14.0,<1.0.0"
+    "sentence-transformers>=5.1.2",
+    "torch>=2.8.0",
+    "tokenizers>=0.21.0",
+    "transformers>=4.57.0",
+    "onnxruntime>=1.19.0",
 ]
 
 deployment = [
