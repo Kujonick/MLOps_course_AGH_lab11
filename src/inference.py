@@ -2,13 +2,11 @@ from sentence_transformers import SentenceTransformer
 from sklearn.linear_model import LogisticRegression
 import joblib
 from typing import Tuple
-import os
-LOCAL_DIR = os.getenv("LOCAL_DIR")
+from src.scripts.settings import Settings
 
-
-def load_models() -> Tuple[SentenceTransformer, LogisticRegression]:
-    model = SentenceTransformer(f"{LOCAL_DIR}/sentence_transformer.model")
-    classifier: LogisticRegression = joblib.load(f"{LOCAL_DIR}/classifier.joblib")
+def load_models(settings: Settings) -> Tuple[SentenceTransformer, LogisticRegression]:
+    model = SentenceTransformer(str(settings.sentence_transformer_dir))
+    classifier: LogisticRegression = joblib.load(str(settings.classifier_joblib_path))
     return model, classifier
 
 

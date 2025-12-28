@@ -2,10 +2,17 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from src.models import PredictRequest, PredictResponse
 from src.inference import predict, load_models
+from src.scripts.download_artifacts import load_artifacts
+from src.scripts.settings import Settings
+from dotenv import load_dotenv
 
+load_dotenv()
+
+settings = Settings()
+load_artifacts(settings)
 app = FastAPI()
 
-model, classifier = load_models()
+model, classifier = load_models(settings)
 responses = ["negative", "neutral", "positive"]
 
 
