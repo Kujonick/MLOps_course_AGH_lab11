@@ -2,15 +2,16 @@ from src.inference import load_models, predict
 import pytest
 from sentence_transformers import SentenceTransformer
 from sklearn.linear_model import LogisticRegression
-
+from src.scripts.settings import Settings
 
 def test_loading():
-    model, classifier = load_models()
+    settings = Settings()
+    model, classifier = load_models(settings)
     assert isinstance(model, SentenceTransformer)
     assert isinstance(classifier, LogisticRegression)
 
-
-model, classifier = load_models()
+settings = Settings()
+model, classifier = load_models(settings)
 
 
 @pytest.mark.parametrize(
