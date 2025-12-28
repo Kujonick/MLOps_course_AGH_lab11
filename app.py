@@ -6,13 +6,14 @@ from src.scripts.download_artifacts import load_artifacts
 from src.scripts.settings import Settings
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 settings = Settings()
 load_artifacts(settings)
 app = FastAPI()
 
-model, classifier = load_models(settings)
+tokenizer, model, classifier = load_models(settings)
 responses = ["negative", "neutral", "positive"]
 
 
@@ -27,5 +28,5 @@ def predict_request(request: PredictRequest):
         return JSONResponse(
             content={"message": "Request cannot be empty"}, status_code=400
         )
-    output = predict(model, classifier, request.text)
+    output = predict(tokenizer, model, classifier, request.text)
     return PredictResponse(prediction=responses[output])
