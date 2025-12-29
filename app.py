@@ -5,7 +5,7 @@ from src.inference import predict, load_models
 from src.scripts.download_artifacts import load_artifacts
 from src.scripts.settings import Settings
 from dotenv import load_dotenv
-
+from mangum import Mangum
 
 load_dotenv()
 
@@ -30,3 +30,6 @@ def predict_request(request: PredictRequest):
         )
     output = predict(tokenizer, model, classifier, request.text)
     return PredictResponse(prediction=responses[output])
+
+
+handler = Mangum(app)
