@@ -112,7 +112,7 @@ jobs:
       - name: Deploy with AWS SAM
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          REPOSITORY: sentiment-app-onnx
           IMAGE_TAG: ${{ github.sha }}
         run: |
           sam deploy \
