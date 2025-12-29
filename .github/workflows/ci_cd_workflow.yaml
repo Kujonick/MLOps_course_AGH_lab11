@@ -73,6 +73,12 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
         with:
           mask-password: 'true'
+      
+      - name: Create .env file for Docker
+        run: |
+          echo "BUCKET=${BUCKET}" >> .env
+          echo "PREFIX=${PREFIX}" >> .env
+          echo "RESOURCE_DIR=${RESOURCE_DIR}" >> .env
 
       - name: Build and Push Docker image
         env:
